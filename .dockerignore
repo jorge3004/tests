@@ -2,3 +2,5 @@ node_modules
 npm-debug.log
 .git
 node_modules
+Dockerfile
+docker-compose.yml

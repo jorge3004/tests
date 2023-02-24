@@ -1,32 +1,13 @@
-
 services:
   web-dev:
-    image: dev-image
-    container_name: dev-container
     build:
       context: ./
       target: dev
+      args:
+        DOCKER_BUILDKIT: 1
     volumes:
-      - ./src:.
-    command: npm run start:dev
+      - ./src/public:/usr/src/app/public
+      - ./src/app.js:/usr/src/app/app.js
     ports:
-      - "3011:3000"
-    environment:
-      NODE_ENV: development
-      # DEBUG: nodejs-docker-express:*
-  # web-prod:
-  #   build:
-  #     context: ./
-  #     target: dev
-  #     args:
-  #       DOCKER_BUILDKIT: 1
-  #   volumes:
-  #     - .:/src
-  #   command: npm run start:prod
-  #   ports:
-  #     - "3011:3000"
-  #   environment:
-  #     NODE_ENV: production
-  #     DEBUG: nodejs-docker-express:*
-
-  # https://blog.logrocket.com/node-js-docker-improve-dx-docker-compose/
+      - "3011:8080"
+    # https://blog.logrocket.com/node-js-docker-improve-dx-docker-compose/
