@@ -1,9 +1,6 @@
 const express = require('express');
 const { main } = require('./src/public/js/main');
 require('dotenv').config()
-var reload = require('reload')
-
-
 
 // App
 const app = express();
@@ -12,12 +9,8 @@ const app = express();
 //     res.send('Hello');
 // });
 
-
-
 // app.use(express.static("src/public"));
 app.listen(process.env.TARGET_PORT, () => {
     console.log(`Running on http://${"localhost"}:${process.env.PUBLISHED_PORT}`);
     console.table(main());
 });
-
-reload(app);
