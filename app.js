@@ -9,7 +9,7 @@ const app = express();
 //     res.send('Hello');
 // });
 
-// app.use(express.static("src/public"));
+app.use(express.static("src/public"));
 app.listen(process.env.TARGET_PORT, () => {
     console.log(`Running on http://${"localhost"}:${process.env.PUBLISHED_PORT}`);
     console.table(main());
