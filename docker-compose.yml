@@ -2,12 +2,18 @@ services:
   web-dev:
     build:
       context: ./
-      target: dev
+      target: ${TARGET}
       args:
         DOCKER_BUILDKIT: 1
+    image: ${IMAGE_NAME}
+    container_name: ${CONTAINER_NAME}
     volumes:
-      - ./src/public:/usr/src/app/public
-      - ./src/app.js:/usr/src/app/app.js
+      - ./src:/app/src
+      - ./app.js:/app/app.js
+      - ./.env:/app/.env
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
     ports:
-      - "3011:8080"
+      - "${PUBLISHED_PORT}:${TARGET_PORT}"
+
     # https://blog.logrocket.com/node-js-docker-improve-dx-docker-compose/

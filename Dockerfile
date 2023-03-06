@@ -1,6 +1,6 @@
 FROM node:alpine as base
-WORKDIR /usr/src/app
-COPY ./src/package*.json ./
+WORKDIR /app
+COPY ./package*.json ./
 ENV DEBUG=nodejs-docker-express:*
 
 FROM base as production
